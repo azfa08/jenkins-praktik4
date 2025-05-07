@@ -4,11 +4,11 @@ pipeline {
             image 'python:3.10'
         }
     }
-|
+
     environment {
         VENV = 'venv'
     }
-    
+
     stages {
         stage('Setup Environment & Install Dependencies') {
             steps {
@@ -20,7 +20,7 @@ pipeline {
                 '''
             }
         }
-        
+
         stage('Run Tests') {
             steps {
                 sh '''
@@ -29,7 +29,7 @@ pipeline {
                 '''
             }
         }
-        
+
         stage('Deploy') {
             when {
                 anyOf {
@@ -53,7 +53,7 @@ pipeline {
                     httpMode: 'POST',
                     contentType: 'APPLICATION_JSON',
                     requestBody: groovy.json.JsonOutput.toJson(payload),
-                    url: 'https://discord.com/api/webhooks/1369689288677265478/FCn1AyvJLoI82w4YVjQvVofYgdc_t_LbOqG8-iR1zjHIlOtKgSDvLeGS_32F4yQ-NQaR'
+                    url: 'https://discord.com/api/webhooks/1368300558699466824/da5JH5oV5gFL3vC1kQTSvTHZ0J5-tIkDiHQR1eWKe66128KBl4Vw2khxqxnHUkMqAQC-'
                 )
             }
         }
@@ -66,7 +66,7 @@ pipeline {
                     httpMode: 'POST',
                     contentType: 'APPLICATION_JSON',
                     requestBody: groovy.json.JsonOutput.toJson(payload),
-                    url: 'https://discord.com/api/webhooks/1369689288677265478/FCn1AyvJLoI82w4YVjQvVofYgdc_t_LbOqG8-iR1zjHIlOtKgSDvLeGS_32F4yQ-NQaR'
+                    url: 'https://discord.com/api/webhooks/1368300558699466824/da5JH5oV5gFL3vC1kQTSvTHZ0J5-tIkDiHQR1eWKe66128KBl4Vw2khxqxnHUkMqAQC-'
                 )
             }
         }
