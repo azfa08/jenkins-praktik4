@@ -1,20 +1,35 @@
 pipeline {
     agent {
         docker {
-            image 'python"3.10'
+            image 'python:3.10'
         }
     }
+|
+    environment {
+        VENV = 'venv'
+    }
+    
     stages {
-        stage('Install Dependencies') {
+        stage('Setup Environment & Install Dependencies') {
             steps {
-                sh 'pip install -r requirements.txt'
+                sh '''
+                    python -m venv $VENV
+                    . $VENV/bin/activate
+                    pip install --upgrade pip
+                    pip install -r requirements.txt
+                '''
             }
         }
+        
         stage('Run Tests') {
             steps {
-                sh 'pytest test_app.py'
+                sh '''
+                    . $VENV/bin/activate
+                    pytest test_app.py
+                '''
             }
         }
+        
         stage('Deploy') {
             when {
                 anyOf {
@@ -38,7 +53,7 @@ pipeline {
                     httpMode: 'POST',
                     contentType: 'APPLICATION_JSON',
                     requestBody: groovy.json.JsonOutput.toJson(payload),
-                    url: 'https://canary.discord.com/api/webhooks/1369688960678232065/RLDN0oG8UvCO2-O6wOibvjds-knMhiLEOpLFgkuNrsCElFJqyJcacVDX0eFD_8vucLn_'
+                    url: 'https://discord.com/api/webhooks/1369689288677265478/FCn1AyvJLoI82w4YVjQvVofYgdc_t_LbOqG8-iR1zjHIlOtKgSDvLeGS_32F4yQ-NQaR'
                 )
             }
         }
@@ -51,7 +66,7 @@ pipeline {
                     httpMode: 'POST',
                     contentType: 'APPLICATION_JSON',
                     requestBody: groovy.json.JsonOutput.toJson(payload),
-                    url: 'https://canary.discord.com/api/webhooks/1369688960678232065/RLDN0oG8UvCO2-O6wOibvjds-knMhiLEOpLFgkuNrsCElFJqyJcacVDX0eFD_8vucLn_'
+                    url: 'https://discord.com/api/webhooks/1369689288677265478/FCn1AyvJLoI82w4YVjQvVofYgdc_t_LbOqG8-iR1zjHIlOtKgSDvLeGS_32F4yQ-NQaR'
                 )
             }
         }
