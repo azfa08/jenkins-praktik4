@@ -53,7 +53,7 @@ pipeline {
                     httpMode: 'POST',
                     contentType: 'APPLICATION_JSON',
                     requestBody: groovy.json.JsonOutput.toJson(payload),
-                    url: 'https://canary.discord.com/api/webhooks/1369688960678232065/RLDN0oG8UvCO2-O6wOibvjds-knMhiLEOpLFgkuNrsCElFJqyJcacVDX0eFD_8vucLn_'
+                    url: 'https://canary.discord.com/api/webhooks/1371137419285631051/Afp1xOY_y0LXo1UApetjAj7G10AKna7jU81qoxPjNP22PHkcc9waA5Kpf_yxmKS73PkM'
                 )
             }
         }
@@ -66,7 +66,7 @@ pipeline {
                     httpMode: 'POST',
                     contentType: 'APPLICATION_JSON',
                     requestBody: groovy.json.JsonOutput.toJson(payload),
-                    url: 'https://canary.discord.com/api/webhooks/1369688960678232065/RLDN0oG8UvCO2-O6wOibvjds-knMhiLEOpLFgkuNrsCElFJqyJcacVDX0eFD_8vucLn_'
+                    url: 'https://canary.discord.com/api/webhooks/1371137419285631051/Afp1xOY_y0LXo1UApetjAj7G10AKna7jU81qoxPjNP22PHkcc9waA5Kpf_yxmKS73PkM'
                 )
             }
         }
