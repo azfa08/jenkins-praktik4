@@ -10,8 +10,9 @@ pipeline {
     }
 
     stages {
-        stage('Setup Environment & Install Dependencies') {
+        stage('Checkout & Setup Environment') {
             steps {
+                checkout scm
                 sh '''
                     python -m venv $VENV
                     . $VENV/bin/activate
